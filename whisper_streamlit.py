@@ -2,9 +2,6 @@ import streamlit as st
 import requests
 import io
 
-# --- Dil Tanımlamaları ---
-
-# Arayüz metinleri için sözlük yapısı (Yeni diller eklendi)
 texts = {
     'tr': {
         'app_title': "☁️ Whisper API ile Ses Dosyasını Metne Çevirme",
@@ -152,8 +149,6 @@ texts = {
     }
 }
 
-# Whisper API'si için desteklenen diller (ISO 639-1 kodları) ve gösterim adları
-# Daha fazla dil ekleyebilirsiniz: https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
 supported_audio_languages = {
     "Türkçe": "tr",
     "English": "en",
@@ -161,22 +156,17 @@ supported_audio_languages = {
     "Français": "fr",
     "Deutsch": "de",
     "Italiano": "it",
-    # İhtiyacınıza göre daha fazla dil ekleyin
 }
 
-# --- Yardımcı Fonksiyonlar ---
 def get_text(key):
     """Mevcut arayüz diline göre metni döndürür."""
-    # Session state başlatılmamışsa varsayılan olarak 'tr' kullan
     lang_code = st.session_state.get('lang', 'tr')
     return texts.get(lang_code, texts['en']).get(key, f"Missing text: {key}")
 
-# --- API ile Transkripsiyon Fonksiyonu ---
 def transcribe_audio_openai_api(api_key, audio_bytes, filename, audio_language_code):
     """OpenAI Whisper API'sini kullanarak sesi metne çevirir."""
     files = {'file': (filename, audio_bytes)}
     headers = {'Authorization': f'Bearer {api_key}'}
-    # Seçilen ses dili kodunu API'ye gönder
     data = {'model': 'whisper-1', 'language': audio_language_code}
 
     st.info(get_text('api_request_info'))
@@ -185,35 +175,30 @@ def transcribe_audio_openai_api(api_key, audio_bytes, filename, audio_language_c
             "https://api.openai.com/v1/audio/transcriptions",
             headers=headers,
             files=files,
-            data=data # Dil parametresi eklendi
+            data=data 
         )
-        response.raise_for_status() # HTTP hatalarını kontrol et (4xx, 5xx)
+        response.raise_for_status() 
         result = response.json()
         st.success(get_text('api_response_success'))
         return result.get("text"), None
     except requests.exceptions.RequestException as e:
         error_message = f"{get_text('api_request_error')} {e}"
-        # Yanıttan daha fazla detay almaya çalış (varsa)
         try:
             error_details = response.json()
             error_message += f"\n{get_text('api_response_error_details')} {error_details}"
         except:
-            pass # JSON okunamıyorsa veya response yoksa geç
+            pass 
         return "", error_message
     except Exception as e:
         return "", f"{get_text('unexpected_error')} {e}"
 
-# --- Streamlit Arayüzü ---
 
-# Session state'i başlat (eğer yoksa)
 if 'lang' not in st.session_state:
-    st.session_state.lang = 'tr' # Varsayılan dil Türkçe
+    st.session_state.lang = 'tr' # 
 
-# Sayfa yapılandırması (Başlık artık dinamik olarak ayarlanacak)
 st.set_page_config(page_title="Ses Metne Çevirme / Speech-to-Text", layout="centered")
 
 
-# Arayüz dili seçenekleri ve gösterim adları
 interface_languages = {
     'tr': "Türkçe",
     'en': "English",
@@ -223,27 +208,24 @@ interface_languages = {
     'it': "Italiano",
 }
 
-# Sidebar'da arayüz dili seçimi (Güncellendi)
 st.sidebar.selectbox(
     get_text('sidebar_lang_select'),
-    options=list(interface_languages.keys()), # Dil kodları
-    format_func=lambda code: interface_languages[code], # Gösterim adları
-    key='lang' # Bu key sayesinde seçilen değer doğrudan st.session_state.lang'a atanır
+    options=list(interface_languages.keys()), 
+    format_func=lambda code: interface_languages[code], 
+    key='lang'
 )
 
-# Ana başlık ve açıklama (get_text ile)
 st.title(get_text('app_title'))
 st.write(get_text('app_description'))
 
-# API Anahtarını Güvenli Şekilde Alma
 try:
     openai_api_key = st.secrets["OPENAI_API_KEY"]
 except KeyError:
     st.error(get_text('api_key_missing'))
     openai_api_key = None
 
-# --- Ana Uygulama Alanı ---
-if openai_api_key: # Sadece API anahtarı varsa devam et
+
+if openai_api_key: 
     uploaded_file = st.file_uploader(
         get_text('upload_label'),
         type=["wav", "mp3", "ogg", "flac", "m4a", "aac", "mpeg", "mpga", "webm"]
@@ -253,7 +235,7 @@ if openai_api_key: # Sadece API anahtarı varsa devam et
         audio_bytes = uploaded_file.read()
         file_extension = uploaded_file.name.split('.')[-1]
 
-        # Ses önizlemesi
+        
         audio_format_for_player = f"audio/{file_extension}"
         if file_extension.lower() == 'm4a': audio_format_for_player = "audio/mp4"
         try:
@@ -261,25 +243,23 @@ if openai_api_key: # Sadece API anahtarı varsa devam et
         except Exception as e:
             st.warning(f"{get_text('audio_preview_error')}")
 
-        # Ses dosyasının dilini seçme (Bu kısım aynı kalabilir çünkü diller zaten destekleniyordu)
-        # Ancak gösterim adlarını arayüz diline göre dinamik yapmak GEREKMEZ,
-        # çünkü sesin dili arayüz dilinden bağımsızdır. Orijinal adları kullanmak daha iyi.
+
         audio_lang_display_names = list(supported_audio_languages.keys())
         selected_audio_language_name = st.selectbox(
             get_text('audio_lang_select'),
             options=audio_lang_display_names
         )
-        # Seçilen ad'a karşılık gelen ISO kodunu al
+        
         selected_audio_language_code = supported_audio_languages[selected_audio_language_name]
 
-        # Transkripsiyon butonu
+       
         if st.button(get_text('transcribe_button')):
             with st.spinner(get_text('spinner_text')):
                 transcribed_text, error = transcribe_audio_openai_api(
                     openai_api_key,
                     audio_bytes,
                     uploaded_file.name,
-                    selected_audio_language_code # Seçilen ses dili kodunu gönder
+                    selected_audio_language_code 
                 )
 
             if error:
@@ -294,10 +274,9 @@ if openai_api_key: # Sadece API anahtarı varsa devam et
     else:
         st.info(get_text('select_file_prompt'))
 
-else: # API anahtarı yoksa uyarı göster
+else: 
     st.warning(get_text('api_key_needed'))
 
-# Altbilgi
 st.markdown("---")
 st.caption(get_text('footer_caption'))
 st.caption(get_text('footer_pricing'))
