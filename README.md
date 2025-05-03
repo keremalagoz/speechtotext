@@ -119,3 +119,128 @@ Bu proje MIT Lisansı altında lisanslanmıştır. Detaylar için `LICENSE` dosy
 *   Kolay web uygulaması geliştirme ve yayınlama imkanı sunduğu için [Streamlit](https://streamlit.io/)'e.
 
 ---
+# Speech-to-Text with Whisper API & Streamlit
+
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://speechtotext-whisper.streamlit.app/) <!-- UPDATE THIS LINK AFTER DEPLOYMENT -->
+
+This project is a simple web application that allows users to upload audio files (MP3, WAV, M4A, etc.) and transcribe them into text using OpenAI's powerful Whisper API. The application interface is built with Python's Streamlit library and can be deployed for free on Streamlit Community Cloud. It features a multi-language interface and allows specifying the language of the audio file for accurate transcription.
+
+## 🚀 Features
+
+*   **Easy File Upload:** Supports various audio formats via a simple upload interface.
+*   **Audio Preview:** Listen to the uploaded audio file directly in the browser.
+*   **High-Accuracy Transcription:** Utilizes the OpenAI Whisper API (`whisper-1` model) for reliable speech-to-text conversion.
+*   **Multi-Language Interface:** Choose the application's display language (English, Turkish, Spanish, French, German, Italian). 🇬🇧🇹🇷🇪🇸🇫🇷🇩🇪🇮🇹
+*   **Audio Language Selection:** Specify the language spoken in the audio file for optimal transcription results. 🗣️🌍
+*   **Simple UI:** User-friendly and straightforward web interface built with Streamlit.
+*   **Secure API Key Management:** The OpenAI API key is securely stored using Streamlit Secrets.
+
+## ✨ Demo
+
+<!-- You can add a GIF or screenshot of your running application here -->
+<!-- Example: ![Application Screenshot](screenshot.png) -->
+[Uygulama Ekran Görüntüsü](screenshot1.png)
+[Uygulama Ekran Görüntüsü](screenshot2.png)
+
+Try the live application here: [https://your-deployed-streamlit-app-url.streamlit.app/](https://speechtotext-whisper.streamlit.app/) <!-- UPDATE THIS LINK AFTER DEPLOYMENT -->
+
+## 🛠️ Technologies Used
+
+*   **Python:** The primary programming language.
+*   **Streamlit:** Framework used to build and deploy the web interface.
+*   **OpenAI API:** Access to the `whisper-1` model for speech recognition.
+*   **Requests:** To send HTTP requests to the OpenAI API.
+*   **ffmpeg:** (Installed via `packages.txt` in the Streamlit Cloud environment) Required by the Whisper API backend to handle various audio formats.
+
+## ⚙️ Setup and Running (Locally)
+
+To run this project on your local machine, follow these steps:
+
+1.  **Clone the Repository:**
+    ```bash
+    git clone https://github.com/keremalagoz/speechtotext.git
+    cd speechtotext
+    ```
+
+2.  **Create a Virtual Environment (Recommended):**
+    ```bash
+    # Linux/macOS
+    python -m venv venv
+    source venv/bin/activate
+
+    # Windows
+    python -m venv venv
+    .\venv\Scripts\activate
+    ```
+
+3.  **Install Dependencies:**
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+4.  **Set Up OpenAI API Key:**
+    *   Create a folder named `.streamlit` in the project's root directory.
+    *   Inside this folder, create a file named `secrets.toml`.
+    *   Edit the `secrets.toml` file with the following content, replacing `sk-xxxxxxxx` with your actual OpenAI API key:
+        ```toml
+        # .streamlit/secrets.toml
+        OPENAI_API_KEY = "sk-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+        ```
+    *   **IMPORTANT:** Never commit your `secrets.toml` file to your Git repository! Ensure your `.gitignore` file includes the line `.streamlit/secrets.toml`.
+
+5.  **Run the Streamlit App:**
+    ```bash
+    streamlit run app.py
+    ```
+    The application should open in your default web browser.
+
+## ☁️ Deploying with Streamlit Community Cloud
+
+To deploy this application on the web for free:
+
+1.  Push your project to a GitHub repository (including `app.py`, `requirements.txt`, and `packages.txt`).
+2.  Log in to [Streamlit Community Cloud](https://share.streamlit.io/) with your GitHub account.
+3.  Click "New app" and choose your GitHub repository, branch (usually `main` or `master`), and the path to your main Python file (`app.py`).
+4.  **`packages.txt` File:** Ensure you have a `packages.txt` file in your repository with the following content. This tells Streamlit Cloud to install `ffmpeg`:
+    ```text
+    # packages.txt
+    ffmpeg
+    ```
+5.  **Advanced Settings -> Secrets:** Go to the "Secrets" section in your application's settings on Streamlit Cloud and add your OpenAI API key in the following format:
+    ```toml
+    OPENAI_API_KEY = "sk-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+    ```
+6.  Click "Deploy!". Your application should be live in a few minutes.
+
+## 🔑 Configuration (API Key)
+
+This application requires an OpenAI API key to function.
+*   Obtain an API key from your OpenAI account: [https://platform.openai.com/api-keys](https://platform.openai.com/api-keys)
+*   **Absolutely do not hardcode your API key directly in the code or share it publicly!**
+*   For local execution, add it to the `.streamlit/secrets.toml` file.
+*   For deployment on Streamlit Cloud, add it to the "Secrets" section of the application settings. The code (`st.secrets["OPENAI_API_KEY"]`) will securely access the key.
+
+## 💡 Usage
+
+1.  Navigate to the deployed Streamlit application.
+2.  Use the sidebar to select your preferred interface language (English, Turkish, etc.).
+3.  Click the "Choose an audio file..." button to upload an audio file from your computer (e.g., MP3, WAV, M4A).
+4.  Optionally, listen to the uploaded audio using the preview player.
+5.  Select the language spoken in the audio file from the "Audio File Language" dropdown.
+6.  Click the "Transcribe" (or equivalent) button.
+7.  Once processing is complete, the transcribed text will appear in the text area below.
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to open an "Issue" to report bugs or suggest new features. If you'd like to contribute code, please submit a "Pull Request".
+
+## 📄 License
+
+This project is licensed under the MIT License. See the `LICENSE` file for details.
+
+## 🙏 Acknowledgements
+
+*   Thanks to [OpenAI](https://openai.com/) for their powerful Whisper API.
+*   Thanks to [Streamlit](https://streamlit.io/) for making web app development and deployment so easy.
+
+---
