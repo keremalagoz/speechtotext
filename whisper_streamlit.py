@@ -4,7 +4,7 @@ import io
 
 # --- Dil Tanımlamaları ---
 
-# Arayüz metinleri için sözlük yapısı
+# Arayüz metinleri için sözlük yapısı (Yeni diller eklendi)
 texts = {
     'tr': {
         'app_title': "☁️ Whisper API ile Ses Dosyasını Metne Çevirme",
@@ -53,6 +53,102 @@ texts = {
         'footer_caption': "This application was created using OpenAI Whisper API and Streamlit.",
         'footer_pricing': "Check OpenAI pricing for usage costs.",
         'select_file_prompt': "Please upload an audio file above to transcribe.",
+    },
+    'es': {
+        'app_title': "☁️ Voz a Texto con la API de Whisper",
+        'app_description': "Sube tu archivo de audio y lo transcribiremos usando la API de OpenAI Whisper.",
+        'sidebar_lang_select': "Idioma de la Interfaz:",
+        'api_key_missing': "¡Clave API de OpenAI no encontrada en Streamlit Secrets! Por favor, agrégala como `OPENAI_API_KEY`.",
+        'api_key_needed': "Por favor, agrega tu clave API a Streamlit Secrets para continuar.",
+        'upload_label': "Elige un archivo de audio...",
+        'audio_preview_error': "No se pudo cargar la vista previa del audio.",
+        'audio_lang_select': "Idioma del Archivo de Audio:",
+        'transcribe_button': "Transcribir",
+        'spinner_text': "Enviando audio a la API y procesando...",
+        'api_request_info': "Enviando solicitud a la API de OpenAI Whisper...",
+        'api_response_success': "Respuesta recibida de la API.",
+        'transcription_success': "¡Transcrito Exitosamente!",
+        'output_text_label': "Texto de Salida:",
+        'output_text_area_label': "Texto",
+        'transcription_empty_warning': "La transcripción falló (salida vacía), no se recibió texto válido de la API.",
+        'api_request_error': "Error durante la solicitud a la API:",
+        'api_response_error_details': "Respuesta de la API:",
+        'unexpected_error': "Ocurrió un error inesperado:",
+        'footer_caption': "Esta aplicación fue creada usando la API de OpenAI Whisper y Streamlit.",
+        'footer_pricing': "Consulta los precios de OpenAI para los costos de uso.",
+        'select_file_prompt': "Por favor, sube un archivo de audio arriba para transcribir.",
+    },
+    'fr': {
+        'app_title': "☁️ Parole en Texte avec l'API Whisper",
+        'app_description': "Téléchargez votre fichier audio, et nous le transcrirons à l'aide de l'API OpenAI Whisper.",
+        'sidebar_lang_select': "Langue de l'Interface:",
+        'api_key_missing': "Clé API OpenAI introuvable dans Streamlit Secrets ! Veuillez l'ajouter en tant que `OPENAI_API_KEY`.",
+        'api_key_needed': "Veuillez ajouter votre clé API à Streamlit Secrets pour continuer.",
+        'upload_label': "Choisissez un fichier audio...",
+        'audio_preview_error': "Impossible de charger l'aperçu audio.",
+        'audio_lang_select': "Langue du Fichier Audio:",
+        'transcribe_button': "Transcrire",
+        'spinner_text': "Envoi de l'audio à l'API et traitement...",
+        'api_request_info': "Envoi de la requête à l'API OpenAI Whisper...",
+        'api_response_success': "Réponse reçue de l'API.",
+        'transcription_success': "Transcrit avec Succès !",
+        'output_text_label': "Texte de Sortie:",
+        'output_text_area_label': "Texte",
+        'transcription_empty_warning': "La transcription a échoué (sortie vide), texte non valide reçu de l'API.",
+        'api_request_error': "Erreur lors de la requête API:",
+        'api_response_error_details': "Réponse de l'API:",
+        'unexpected_error': "Une erreur inattendue s'est produite:",
+        'footer_caption': "Cette application a été créée en utilisant l'API OpenAI Whisper et Streamlit.",
+        'footer_pricing': "Consultez la tarification OpenAI pour les coûts d'utilisation.",
+        'select_file_prompt': "Veuillez télécharger un fichier audio ci-dessus pour transcrire.",
+    },
+    'de': {
+        'app_title': "☁️ Sprache zu Text mit der Whisper API",
+        'app_description': "Laden Sie Ihre Audiodatei hoch, und wir transkribieren sie mit der OpenAI Whisper API.",
+        'sidebar_lang_select': "Oberflächensprache:",
+        'api_key_missing': "OpenAI API-Schlüssel nicht in Streamlit Secrets gefunden! Bitte fügen Sie ihn als `OPENAI_API_KEY` hinzu.",
+        'api_key_needed': "Bitte fügen Sie Ihren API-Schlüssel zu Streamlit Secrets hinzu, um fortzufahren.",
+        'upload_label': "Wählen Sie eine Audiodatei...",
+        'audio_preview_error': "Audiovorschau konnte nicht geladen werden.",
+        'audio_lang_select': "Sprache der Audiodatei:",
+        'transcribe_button': "Transkribieren",
+        'spinner_text': "Audio wird an API gesendet und verarbeitet...",
+        'api_request_info': "Anfrage an OpenAI Whisper API wird gesendet...",
+        'api_response_success': "Antwort von API erhalten.",
+        'transcription_success': "Erfolgreich Transkribiert!",
+        'output_text_label': "Ausgabetext:",
+        'output_text_area_label': "Text",
+        'transcription_empty_warning': "Transkription fehlgeschlagen (Ausgabe leer), kein gültiger Text von API empfangen.",
+        'api_request_error': "Fehler während der API-Anfrage:",
+        'api_response_error_details': "API-Antwort:",
+        'unexpected_error': "Ein unerwarteter Fehler ist aufgetreten:",
+        'footer_caption': "Diese Anwendung wurde mit der OpenAI Whisper API und Streamlit erstellt.",
+        'footer_pricing': "Überprüfen Sie die OpenAI-Preise für Nutzungskosten.",
+        'select_file_prompt': "Bitte laden Sie oben eine Audiodatei zum Transkribieren hoch.",
+    },
+    'it': {
+        'app_title': "☁️ Da Voce a Testo con l'API Whisper",
+        'app_description': "Carica il tuo file audio e lo trascriveremo utilizzando l'API OpenAI Whisper.",
+        'sidebar_lang_select': "Lingua Interfaccia:",
+        'api_key_missing': "Chiave API OpenAI non trovata in Streamlit Secrets! Per favore, aggiungila come `OPENAI_API_KEY`.",
+        'api_key_needed': "Per favore, aggiungi la tua chiave API a Streamlit Secrets per procedere.",
+        'upload_label': "Scegli un file audio...",
+        'audio_preview_error': "Impossibile caricare l'anteprima audio.",
+        'audio_lang_select': "Lingua File Audio:",
+        'transcribe_button': "Trascrivi",
+        'spinner_text': "Invio dell'audio all'API ed elaborazione...",
+        'api_request_info': "Invio richiesta all'API OpenAI Whisper...",
+        'api_response_success': "Risposta ricevuta dall'API.",
+        'transcription_success': "Trascritto con Successo!",
+        'output_text_label': "Testo di Output:",
+        'output_text_area_label': "Testo",
+        'transcription_empty_warning': "Trascrizione fallita (output vuoto), testo non valido ricevuto dall'API.",
+        'api_request_error': "Errore durante la richiesta API:",
+        'api_response_error_details': "Risposta API:",
+        'unexpected_error': "Si è verificato un errore imprevisto:",
+        'footer_caption': "Questa applicazione è stata creata utilizzando l'API OpenAI Whisper e Streamlit.",
+        'footer_pricing': "Controlla i prezzi di OpenAI per i costi di utilizzo.",
+        'select_file_prompt': "Per favore, carica un file audio qui sopra per trascrivere.",
     }
 }
 
@@ -71,7 +167,9 @@ supported_audio_languages = {
 # --- Yardımcı Fonksiyonlar ---
 def get_text(key):
     """Mevcut arayüz diline göre metni döndürür."""
-    return texts[st.session_state.lang].get(key, f"Missing text: {key}")
+    # Session state başlatılmamışsa varsayılan olarak 'tr' kullan
+    lang_code = st.session_state.get('lang', 'tr')
+    return texts.get(lang_code, texts['en']).get(key, f"Missing text: {key}")
 
 # --- API ile Transkripsiyon Fonksiyonu ---
 def transcribe_audio_openai_api(api_key, audio_bytes, filename, audio_language_code):
@@ -107,18 +205,29 @@ def transcribe_audio_openai_api(api_key, audio_bytes, filename, audio_language_c
 
 # --- Streamlit Arayüzü ---
 
-# Sayfa yapılandırması (Başlık artık dinamik olarak ayarlanacak)
-st.set_page_config(page_title="Ses Metne Çevirme", layout="centered")
-
-# Arayüz dilini session state'de sakla ve başlat
+# Session state'i başlat (eğer yoksa)
 if 'lang' not in st.session_state:
     st.session_state.lang = 'tr' # Varsayılan dil Türkçe
 
-# Sidebar'da arayüz dili seçimi
+# Sayfa yapılandırması (Başlık artık dinamik olarak ayarlanacak)
+st.set_page_config(page_title="Ses Metne Çevirme / Speech-to-Text", layout="centered")
+
+
+# Arayüz dili seçenekleri ve gösterim adları
+interface_languages = {
+    'tr': "Türkçe",
+    'en': "English",
+    'es': "Español",
+    'fr': "Français",
+    'de': "Deutsch",
+    'it': "Italiano",
+}
+
+# Sidebar'da arayüz dili seçimi (Güncellendi)
 st.sidebar.selectbox(
     get_text('sidebar_lang_select'),
-    options=['tr', 'en'],
-    format_func=lambda x: "Türkçe" if x == 'tr' else "English",
+    options=list(interface_languages.keys()), # Dil kodları
+    format_func=lambda code: interface_languages[code], # Gösterim adları
     key='lang' # Bu key sayesinde seçilen değer doğrudan st.session_state.lang'a atanır
 )
 
@@ -152,10 +261,13 @@ if openai_api_key: # Sadece API anahtarı varsa devam et
         except Exception as e:
             st.warning(f"{get_text('audio_preview_error')}")
 
-        # Ses dosyasının dilini seçme
+        # Ses dosyasının dilini seçme (Bu kısım aynı kalabilir çünkü diller zaten destekleniyordu)
+        # Ancak gösterim adlarını arayüz diline göre dinamik yapmak GEREKMEZ,
+        # çünkü sesin dili arayüz dilinden bağımsızdır. Orijinal adları kullanmak daha iyi.
+        audio_lang_display_names = list(supported_audio_languages.keys())
         selected_audio_language_name = st.selectbox(
             get_text('audio_lang_select'),
-            options=list(supported_audio_languages.keys()) # Gösterilecek dil adları
+            options=audio_lang_display_names
         )
         # Seçilen ad'a karşılık gelen ISO kodunu al
         selected_audio_language_code = supported_audio_languages[selected_audio_language_name]
