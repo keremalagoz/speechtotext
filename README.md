@@ -16,6 +16,7 @@ Bu proje, kullanıcıların ses dosyalarını (MP3, WAV, M4A vb.) yükleyerek Op
 
 <!-- Buraya uygulamanızın çalışan bir GIF'ini veya ekran görüntüsünü ekleyebilirsiniz -->
 <!-- Örnek: ![Uygulama Ekran Görüntüsü](screenshot1.png)(screeshot2.png) -->
+[Uygulama Ekran Görüntüsü](screenshot1.png)(screenshot2.png)
 
 Uygulamayı canlı denemek için: [https://your-deployed-streamlit-app-url.streamlit.app/](https://speechtotext-whisper.streamlit.app/) <!-- DEPLOY EDİNCE BU LİNKİ GÜNCELLEYİN -->
 
@@ -109,7 +110,7 @@ Katkılarınız memnuniyetle karşılanır! Hata bildirmek veya yeni özellikler
 
 ## 📄 Lisans
 
-Bu proje MIT Lisansı altında lisanslanmıştır. Detaylar için `LICENSE` dosyasına bakınız. (Eğer bir LICENSE dosyası eklemediyseniz, eklemeniz önerilir. MIT yaygın bir seçenektir.)
+Bu proje MIT Lisansı altında lisanslanmıştır. Detaylar için `LICENSE` dosyasına bakınız.
 
 ## 🙏 Teşekkürler
 
