@@ -139,8 +139,8 @@ This project is a simple web application that allows users to upload audio files
 
 <!-- You can add a GIF or screenshot of your running application here -->
 <!-- Example: ![Application Screenshot](screenshot.png) -->
-[Uygulama Ekran Görüntüsü](screenshot1.png)
-[Uygulama Ekran Görüntüsü](screenshot2.png)
+[App Screenshot](screenshot1.png)
+[App Screenshot](screenshot2.png)
 
 Try the live application here: [https://your-deployed-streamlit-app-url.streamlit.app/](https://speechtotext-whisper.streamlit.app/) <!-- UPDATE THIS LINK AFTER DEPLOYMENT -->
 
