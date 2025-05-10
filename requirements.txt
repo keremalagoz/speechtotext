@@ -3,3 +3,4 @@ openai-whisper
 torch
 pydub
 numpy
+streamlit_mic_recorder
